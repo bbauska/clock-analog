@@ -1,3 +1,4 @@
+/* .js/script.js of clock-analog for clock-analog.bauska.org */
 function updateTimeAndDate() {
     const now = new Date();
     let hours = now.getHours();
