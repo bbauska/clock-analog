@@ -1,12 +1,7 @@
-<!-- index.html for clock-analog.bauska.org -->
 <!DOCTYPE html>
-<!-- <html lang="en"> -->
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <!--~~~~~~~~~~~~~~~~~~~ index.html of Clock-Analog for clock-analog.bauska.org ~~~~~~~~~~~~~~~~~-->
-<head>
-  <meta charset="utf-8">
-
   <!-- meta viewport, title, desc, keywords, robots for SEO -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="title" content="Analog Clock">
@@ -59,12 +54,11 @@
   <!-- more stylesheets -->
 
 </head>
-<body>
+</body>
   <svg id="noise-svg">
-
     <!-- gives background a bit of texture -->
     <filter id='noiseFilter'>
-      <feTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='3' stitchTiles='stitch' />
+        <feTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='3' stitchTiles='stitch' />
     </filter>
     <rect id="noise-rect" filter='url(#noiseFilter)' />
   </svg>
@@ -152,7 +146,8 @@
       <div></div>
     </div> 
   </div>
-  <script src=".js//script.js"></script>
+  <script src="./js/script.js"></script>
 
 </body>
+
 </html>
