@@ -1,32 +1,52 @@
 /* .js/script.js of clock-analog for clock-analog.bauska.org */
-function updateTimeAndDate() {
-    const now = new Date();
-    let hours = now.getHours();
-    const minutes = now.getMinutes().toString().padStart(2, '0');
-    let amPm = hours >= 12 ? 'PM' : 'AM';
-    if (hours > 12) {
-        hours -= 12;
-    } else if (hours === 0) {
-        hours = 12;
+(function() {
+
+  
+  var months = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+],
+days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  
+	function getTime() {
+    
+		var date = new Date(),
+    second  = date.getSeconds() ,
+    minute  = date.getMinutes() ,
+    hour    = date.getHours() ,
+    time = date.toLocaleString('en-US', { hour: 'numeric',minute:'numeric', hour12: true }),
+     day =  date.getDay() ,
+    month = date.getMonth() ,
+    date = date.getDate() +' . '+ months[month],
+        
+		ds = second * -6,
+		dm = minute * -6,
+		dh = hour * -30;
+    
+		$('.second').css('transform', 'rotate(' + ds + 'deg)');
+    $('.minute').css('transform', 'rotate(' + dm + 'deg)');
+    $('.hour').css('transform', 'rotate(' + dh + 'deg)');
+    
+    $('.time').text(time);
+    $('.day').text(days[day]);
+    $('.date').text( date )
+	}
+  
+  function dailer( selector , size){
+     for(var s = 0; s < 60 ; s++){
+      $(selector).append('<span style="transform: rotate('+ 6 * s +'deg) translateX('+ size +'px)">'+s+'</span>')
     }
-    let timeStr = hours.toString().padStart(2, '0') + minutes;
-    if (timeStr.startsWith('0')) {
-        timeStr = ' ' + timeStr.slice(1);
+  }
+  
+  dailer( '.second' , 195);
+  dailer( '.minute' , 145);
+  dailer( '.dail' , 230);
+  
+  for(var s = 1; s < 13 ; s++){
+      $('.hour').append('<span style="transform: rotate('+ 30 * s +'deg) translateX(100px)">'+s+'</span>')
     }
-    let month = (now.getMonth() + 1).toString().padStart(2, '0');
-    let day = now.getDate().toString().padStart(2, '0');
-    const year = now.getFullYear().toString().slice(-2);
-    if (month.startsWith('0')) {
-        month = ' ' + month.slice(1);
-    }
-    if (day.startsWith('0')) {
-        day = ' ' + day.slice(1);
-    }
-    const displayStr = timeStr + amPm + month + day + year;
-    for (let i = 0; i < 12; i++) {
-        document.getElementById('char' + i + '1').textContent = displayStr[i];
-        document.getElementById('char' + i + '2').textContent = displayStr[i];
-    }
-}
-updateTimeAndDate();
-setInterval(updateTimeAndDate, 60000);
+  
+  
+  setInterval(getTime, 1000);
+  getTime();
+  
+} ());
