@@ -228,7 +228,7 @@ html {
   border-radius: 20px;
   box-shadow: 0 0 15px #000 inset;
   padding: 2px 20px;
-  font-size: 16px;
+  font-size: 14px;
 }
 .clock-container .clock-digital .date {
   background: #111;
@@ -237,7 +237,7 @@ html {
   top: 100px;
   color: #fff;
   border-radius: 20px;
-  font-size: 16px;
+  font-size: 14px;
   box-shadow: 0 0 10px #000 inset;
   padding: 2px 20px;
 }
